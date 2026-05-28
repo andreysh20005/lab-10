@@ -1,8 +1,16 @@
-{ } 
- 
-adsfgnh
-afdsgf@afdsgnvm
-adgsfhd@
-@dzfxngc
-asdfsgdgh ;
-asdfdsgf@ ;
+program test;
+var
+  a, b : integer;
+  x, y : real;
+begin
+  a := 10;
+  b := 20;
+  x := 5.25;
+  y := 1.7;
+  
+  if a < b then
+    a := b;
+    
+  if x > y then
+    x := y;
+end.

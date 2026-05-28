@@ -1,9 +1,8 @@
 ﻿
-struct TextPosition
+class TextPosition
 {
-    public uint lineNumber; // номер строки
-    public byte charNumber; // номер позиции в строке
-
+    public uint lineNumber { get; set; } // номер строки
+    public byte charNumber { get; set; } // номер позиции в строке
     public TextPosition(uint ln = 0, byte c = 0)
     {
         lineNumber = ln;
@@ -11,106 +10,88 @@ struct TextPosition
     }
 }
 
-struct Err
+class Err
 {
-    public TextPosition errorPosition;
-    public byte errorCode;
-
+    public TextPosition errorPosition { get; set; }
+    public byte errorCode { get; set; }
     public Err(TextPosition errorPosition, byte errorCode)
     {
         this.errorPosition = errorPosition;
         this.errorCode = errorCode;
     }
 }
+
 class InputOutput
 {
     const byte ERRMAX = 9;
-    public static char Ch { get; set; }
-    public static TextPosition positionNow = new TextPosition();
-    static string line;
-    static byte lastInLine = 0;
-    public static List<Err> err;
+    private static string _line;
+    private static byte _lastInLine;
+    private static uint _errCount;
+    private static uint _errShowCount;
+    private static List<Err> _err;
+    public static TextPosition PositionNow { get; set; }
     public static StreamReader File { get; set; }
-    static uint errCount = 0;
+    public static char Ch { get; set; }
 
-    public static readonly Dictionary<byte, string> ErrorTable = new Dictionary<byte, string>
-    {
-        { 1, "Недопустимый символ" },
-        { 2, "Не закрытая скобка!" },
-        { 3, "Нет точки с запятой!" },
-        { 4, "Неправильный конец строки!" }
-    };
+    private static Dictionary<byte, string> _ErrorTable;
 
 
 
     public static void Init(string filePath)
     {
         File = new System.IO.StreamReader(filePath);
-        positionNow = new TextPosition(1, 0);
-        errCount = 0;
-
+        _errCount = 0;
+        _errShowCount = 0;
+        _lastInLine = 0;
+        PositionNow = new TextPosition(1, 0);
+        _ErrorTable = new Dictionary<byte, string>
+        {
+            { 1, "Неизвестный символ (лексическая ошибка)" },
+            { 203, "Слишком большое целое число (предел для Integer — 32767)" }
+        };
         ReadNextLine();
-
-        Ch = line[0];
+        Ch = _line[0];
     }
 
     public static void NextCh()
     {
-        if (Ch == '@' || Ch == '$')
-        {
-            Error(1, positionNow);
-        }
+        
 
-        if (line[0] == '{' && line[line.Length - 2] != '}')
+        if (PositionNow.charNumber == _lastInLine)
         {
-            if (positionNow.charNumber == 0) Error(2, positionNow);
-        }
-
-        if (positionNow.charNumber > 0 && Ch == ';' && line[positionNow.charNumber - 1] == ' ')
-        {
-            Error(3, positionNow);
-        }
-
-        if (positionNow.charNumber == lastInLine - 1 && Ch != ';' && Ch != '}' && line.Trim() != "")
-        {
-            Error(4, positionNow);
-        }
-
-        if (positionNow.charNumber == lastInLine)
-        {
-            if (err.Count > 0)
+            if (_err.Count > 0)
             {
                 ListErrors();
             }
 
             ReadNextLine();
-
-            positionNow.lineNumber = positionNow.lineNumber + 1;
-            positionNow.charNumber = 0;
-            Ch = line[0];
+            PositionNow.lineNumber = PositionNow.lineNumber + 1;
+            PositionNow.charNumber = 0;
+            Ch = _line[0];
         }
         else
         {
-            positionNow.charNumber = (byte)(positionNow.charNumber + 1);
-            Ch = line[positionNow.charNumber];
+            PositionNow.charNumber = (byte)(PositionNow.charNumber + 1);
+            Ch = _line[PositionNow.charNumber];
         }
     }
 
     private static void ListThisLine()
     {
-        Console.WriteLine(line);
+        Console.WriteLine(_line);
     }
 
     private static void ReadNextLine()
     {
         if (!File.EndOfStream)
         {
-            line = File.ReadLine() + " ";
-            lastInLine = (byte)(line.Length - 1);
+            _errShowCount = 0;
+            _line = File.ReadLine() + " ";
+            _lastInLine = (byte)(_line.Length - 1);
 
-            Console.WriteLine("      " + line.TrimEnd());
+            Console.WriteLine("      " + _line.TrimEnd());
 
-            err = new List<Err>();
+            _err = new List<Err>();
         }
         else
         {
@@ -120,41 +101,44 @@ class InputOutput
         }
     }
 
-    static void End()
+    private static void End()
     {
-        Console.WriteLine($"Компиляция завершена: : ошибок — {errCount}!");
+        Console.WriteLine($"Компиляция завершена: : ошибок — {_errCount}!");
     }
 
     private static void ListErrors()
     {
-        foreach (var e in err)
+        int ii = _err.Count-1;
+        int spacesNeeded;
+        string message;
+        foreach (var e in _err)
         {
+            Console.Write($"**{_errCount-ii-_errShowCount:D2}**");
 
-            Console.Write($"**{err.Count:D2}**");
-
-            int spacesNeeded = e.errorPosition.charNumber + 5 - 6;
+            spacesNeeded = e.errorPosition.charNumber + 5 - 6;
 
             for (int i = 0; i < spacesNeeded+1; i++)
             {
                 Console.Write(" ");
             }
-
-            string message = ErrorTable[e.errorCode];
+            message = _ErrorTable[e.errorCode];
 
             Console.WriteLine($"^ ошибка код {e.errorCode}: {message}");
+            ii--;
         }
     }
-
-    static public void Error(byte errorCode, TextPosition position)
+    public static void Error(byte errorCode, TextPosition position)
     {
-        errCount++;
+        _errCount++;
 
-        Err e;
-        if (err.Count <= ERRMAX)
+        if (_err.Count < ERRMAX)
         {
-            e = new Err(position, errorCode);
-            err.Add(e);
+            TextPosition savedPosition = new TextPosition(position.lineNumber, position.charNumber);
+
+            Err e = new Err(savedPosition, errorCode);
+            _err.Add(e);
         }
+        else _errShowCount++;
     }
 }
 

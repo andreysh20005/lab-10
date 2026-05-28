@@ -1,13 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\",
+  "WorkspaceRootPath": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\inputoutput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\inputoutput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\inputoutput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\keywords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\keywords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|c:\\users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{87F34C8D-C5F5-FD7F-3C57-AF49EB1CF230}|\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,32 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LexicalAnalyzer.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\LexicalAnalyzer.cs",
+              "RelativeDocumentMoniker": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\LexicalAnalyzer.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\LexicalAnalyzer.cs",
+              "RelativeToolTip": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\LexicalAnalyzer.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T16:49:40.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Keywords.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Keywords.cs",
+              "RelativeDocumentMoniker": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Keywords.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Keywords.cs",
+              "RelativeToolTip": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Keywords.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T16:56:05.973Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "InputOutput.cs",
-              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
               "RelativeDocumentMoniker": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
-              "ToolTip": "C:\\Users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
               "RelativeToolTip": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\InputOutput.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwA0AAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAADwv4cAAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T15:37:19.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
               "RelativeDocumentMoniker": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
-              "ToolTip": "C:\\Users\\andre\\source\\repos\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\lab-10\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
               "RelativeToolTip": "\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440 \u043F\u0430\u0441\u043A\u0430\u043B\u044F\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T15:30:56.774Z"
+              "WhenOpened": "2026-05-21T15:30:56.774Z",
+              "EditorCaption": ""
             }
           ]
         }

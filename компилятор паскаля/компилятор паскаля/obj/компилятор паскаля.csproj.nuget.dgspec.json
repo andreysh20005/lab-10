@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\source\\repos\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj": {}
+    "C:\\Users\\andre\\source\\repos\\lab-10\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\source\\repos\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj": {
+    "C:\\Users\\andre\\source\\repos\\lab-10\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\lab-10\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj",
         "projectName": "компилятор паскаля",
-        "projectPath": "C:\\Users\\andre\\source\\repos\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj",
+        "projectPath": "C:\\Users\\andre\\source\\repos\\lab-10\\компилятор паскаля\\компилятор паскаля\\компилятор паскаля.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\source\\repos\\компилятор паскаля\\компилятор паскаля\\obj\\",
+        "outputPath": "C:\\Users\\andre\\source\\repos\\lab-10\\компилятор паскаля\\компилятор паскаля\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
