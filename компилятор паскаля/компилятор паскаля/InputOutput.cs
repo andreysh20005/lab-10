@@ -103,7 +103,7 @@ class InputOutput
 
     private static void End()
     {
-        Console.WriteLine($"Компиляция завершена: : ошибок — {_errCount}!");
+        Console.WriteLine($"Компиляция завершена: ошибок — {_errCount}!");
     }
 
     private static void ListErrors()

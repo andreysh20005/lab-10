@@ -31,6 +31,7 @@ class LexicalAnalyzer
         ident = 2,	// идентификатор
         floatc = 82,	// вещественная константа
         intc = 15,	// целая константа
+        stringc = 83, // строка
         casesy = 31, elsesy = 32, filesy = 57, gotosy = 33, thensy = 52,
         typesy = 34, untilsy = 53, dosy = 54, withsy = 37, ifsy = 56,
         insy = 100, ofsy = 101, orsy = 102, tosy = 103, endsy = 104,
@@ -77,12 +78,13 @@ class LexicalAnalyzer
 
         if (InputOutput.Ch == '\0') return 0;
 
-        if ((InputOutput.Ch >= 'a' && InputOutput.Ch <= 'z') || (InputOutput.Ch >= 'A' && InputOutput.Ch <= 'Z'))
+        if ((InputOutput.Ch >= 'a' && InputOutput.Ch <= 'z') || (InputOutput.Ch >= 'A' && InputOutput.Ch <= 'Z') || InputOutput.Ch == '_')
         {
             string name = "";
             while ((InputOutput.Ch >= 'a' && InputOutput.Ch <= 'z') ||
-                    (InputOutput.Ch >= 'A' && InputOutput.Ch <= 'Z') ||
-                    (InputOutput.Ch >= '0' && InputOutput.Ch <= '9'))
+            (InputOutput.Ch >= 'A' && InputOutput.Ch <= 'Z') ||
+            (InputOutput.Ch >= '0' && InputOutput.Ch <= '9') ||
+            InputOutput.Ch == '_')
             {
                 name += InputOutput.Ch;
                 InputOutput.NextCh();
@@ -230,8 +232,38 @@ class LexicalAnalyzer
                 InputOutput.NextCh();
                 break;
             case '(':
-                symbol = leftpar;
                 InputOutput.NextCh();
+                if (InputOutput.Ch == '*')
+                {
+                    InputOutput.NextCh();
+
+                    while (true)
+                    {
+                        if (InputOutput.Ch == '\0')
+                        {
+                            InputOutput.Error(1, token);
+                            return 0;
+                        }
+
+                        if (InputOutput.Ch == '*')
+                        {
+                            InputOutput.NextCh();
+                            if (InputOutput.Ch == ')')
+                            {
+                                InputOutput.NextCh(); 
+                                break; 
+                            }
+                            continue; 
+                        }
+                        InputOutput.NextCh();
+                    }
+
+                    return NextSym();
+                }
+                else
+                {
+                    symbol = leftpar;
+                }
                 break;
             case ')':
                 symbol = rightpar;
@@ -253,6 +285,39 @@ class LexicalAnalyzer
                 symbol = frpar;
                 InputOutput.NextCh();
                 break;
+            case '\'': 
+            case '"':  
+                char quoteType = InputOutput.Ch; 
+                InputOutput.NextCh();           
+
+                string strLiteral = "";
+
+                
+                while (InputOutput.Ch != quoteType && InputOutput.Ch != '\0')
+                {
+                    
+                    if (InputOutput.Ch == '\n' || InputOutput.Ch == '\r')
+                    {
+                        break;
+                    }
+
+                    strLiteral += InputOutput.Ch; 
+                    InputOutput.NextCh();
+                }
+
+                if (InputOutput.Ch == quoteType)
+                {
+                    InputOutput.NextCh();       
+                    symbol = stringc;           
+                    addrName = strLiteral;      
+                }
+                else
+                {
+                    
+                    InputOutput.Error(1, token);
+                    symbol = 0;
+                }
+                return symbol;
             default:
                 InputOutput.Error(1, token);
                 InputOutput.NextCh();
