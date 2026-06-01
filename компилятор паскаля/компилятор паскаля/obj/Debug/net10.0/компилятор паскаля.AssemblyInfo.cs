@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("компилятор паскаля")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e346b59d4efe93cdc95a18db03b06c6f43b3741")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64787efda9bd749b8798182c16e0313528180ed5")]
 [assembly: System.Reflection.AssemblyProductAttribute("компилятор паскаля")]
 [assembly: System.Reflection.AssemblyTitleAttribute("компилятор паскаля")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

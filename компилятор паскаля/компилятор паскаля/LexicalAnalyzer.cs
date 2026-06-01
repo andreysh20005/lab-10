@@ -1,82 +1,85 @@
-﻿using System;
-
-class LexicalAnalyzer
+﻿class LexicalAnalyzer
 {
     public const byte
-        star = 21, // *
-        slash = 60, // /
-        equal = 16, // =
-        comma = 20, // ,
-        semicolon = 14, // ;
-        colon = 5, // :
-        point = 61,	// .
-        arrow = 62,	// ^
-        leftpar = 9,	// (
-        rightpar = 4,	// )
-        lbracket = 11,	// [
-        rbracket = 12,	// ]
-        flpar = 63,	// {
-        frpar = 64,	// }
-        later = 65,	// <
-        greater = 66,	// >
-        laterequal = 67,	//  <=
-        greaterequal = 68,	//  >=
-        latergreater = 69,	//  <>
-        plus = 70,	// +
-        minus = 71,	// –
-        lcomment = 72,	//  (*
-        rcomment = 73,	//  *)
-        assign = 51,	//  :=
-        twopoints = 74,	//  ..
-        ident = 2,	// идентификатор
-        floatc = 82,	// вещественная константа
-        intc = 15,	// целая константа
-        stringc = 83, // строка
-        casesy = 31, elsesy = 32, filesy = 57, gotosy = 33, thensy = 52,
-        typesy = 34, untilsy = 53, dosy = 54, withsy = 37, ifsy = 56,
-        insy = 100, ofsy = 101, orsy = 102, tosy = 103, endsy = 104,
-        varsy = 105, divsy = 106, andsy = 107, notsy = 108, forsy = 109,
-        modsy = 110, nilsy = 111, setsy = 112, beginsy = 113, whilesy = 114,
-        arraysy = 115, constsy = 116, labelsy = 117, downtosy = 118,
-        packedsy = 119, recordsy = 120, repeatsy = 121, programsy = 122,
-        functionsy = 123, procedurensy = 124;
+        Star = 21, // *
+        Slash = 60, // /
+        Equal = 16, // =
+        Comma = 20, // ,
+        Semicolon = 14, // ;
+        Colon = 5, // :
+        Point = 61,    // .
+        Arrow = 62,    // ^
+        LeftPar = 9,    // (
+        RightPar = 4,    // )
+        LBracket = 11,    // [
+        RBracket = 12,    // ]
+        FlPar = 63,    // {
+        FrPar = 64,    // }
+        Later = 65,    // <
+        Greater = 66,    // >
+        LaterEqual = 67,    //  <=
+        GreaterEqual = 68,    //  >=
+        LaterGreater = 69,    //  <>
+        Plus = 70,    // +
+        Minus = 71,    // –
+        LComment = 72,    //  (*
+        RComment = 73,    //  *)
+        Assign = 51,    //  :=
+        TwoPoints = 74,    //  ..
+        Ident = 2,    // идентификатор
+        FloatC = 82,    // вещественная константа
+        IntC = 15,    // целая константа
+        StringC = 83, // строка
+        CaseSy = 31, ElseSy = 32, FileSy = 57, GotoSy = 33, ThenSy = 52,
+        TypeSy = 34, UntilSy = 53, DoSy = 54, WithSy = 37, IfSy = 56,
+        InSy = 100, OfSy = 101, OrSy = 102, ToSy = 103, EndSy = 104,
+        VarSy = 105, DivSy = 106, AndSy = 107, NotSy = 108, ForSy = 109,
+        ModSy = 110, NilSy = 111, SetSy = 112, BeginSy = 113, WhileSy = 114,
+        ArraySy = 115, ConstSy = 116, LabelSy = 117, DowntoSy = 118,
+        PackedSy = 119, RecordSy = 120, RepeatSy = 121, ProgramSy = 122,
+        FunctionSy = 123, ProcedurenSy = 124;
 
-    private Keywords keywords;
-    private byte symbol;
-    private TextPosition token;
-    private string addrName;
-    private int nmb_int;
-    private float nmb_float;
-    private char one_symbol;
-    private byte pendingToken;
+    private Keywords _keywords;
+    private byte _symbol;
+    private TextPosition _token;
+    private string _addrName;
+    private int _nmbInt;
+    private float _nmbFloat;
+    private char _oneSymbol;
+    private byte _pendingToken;
 
     public LexicalAnalyzer()
     {
-        keywords = new Keywords();
-        token = new TextPosition(0, 0);
-        pendingToken = 0;
-        symbol = 0;
-        nmb_int = 0;
-        nmb_float = 0;
-        addrName = "";
+        _keywords = new Keywords();
+        _token = new TextPosition(0, 0);
+        _pendingToken = 0;
+        _symbol = 0;
+        _nmbInt = 0;
+        _nmbFloat = 0;
+        _addrName = "";
     }
 
     public byte NextSym()
     {
-        if (pendingToken != 0)
+        if (_pendingToken != 0)
         {
-            byte savedSymbol = pendingToken;
-            pendingToken = 0;
+            byte savedSymbol = _pendingToken;
+            _pendingToken = 0;
             return savedSymbol;
         }
 
         while (InputOutput.Ch == ' ' || InputOutput.Ch == '\n' || InputOutput.Ch == '\r' || InputOutput.Ch == '\t')
+        {
             InputOutput.NextCh();
+        }
 
-        token.lineNumber = InputOutput.PositionNow.lineNumber;
-        token.charNumber = InputOutput.PositionNow.charNumber;
+        _token.lineNumber = InputOutput.PositionNow.lineNumber;
+        _token.charNumber = InputOutput.PositionNow.charNumber;
 
-        if (InputOutput.Ch == '\0') return 0;
+        if (InputOutput.Ch == '\0')
+        {
+            return 0;
+        }
 
         if ((InputOutput.Ch >= 'a' && InputOutput.Ch <= 'z') || (InputOutput.Ch >= 'A' && InputOutput.Ch <= 'Z') || InputOutput.Ch == '_')
         {
@@ -92,23 +95,23 @@ class LexicalAnalyzer
             name = name.ToLower();
             byte len = (byte)name.Length;
 
-            if (keywords.Kw.ContainsKey(len) && keywords.Kw[len].ContainsKey(name))
+            if (_keywords.Kw.ContainsKey(len) && _keywords.Kw[len].ContainsKey(name))
             {
-                symbol = keywords.Kw[len][name];
+                _symbol = _keywords.Kw[len][name];
             }
             else
             {
-                symbol = ident;
-                addrName = name;
+                _symbol = Ident;
+                _addrName = name;
             }
-            return symbol;
+            return _symbol;
         }
 
         if (InputOutput.Ch >= '0' && InputOutput.Ch <= '9')
         {
             byte digit;
-            Int16 maxint = Int16.MaxValue;
-            nmb_int = 0;
+            short maxInt = short.MaxValue;
+            _nmbInt = 0;
             bool isOverflow = false;
 
             while (InputOutput.Ch >= '0' && InputOutput.Ch <= '9')
@@ -116,13 +119,15 @@ class LexicalAnalyzer
                 digit = (byte)(InputOutput.Ch - '0');
                 if (!isOverflow)
                 {
-                    if (nmb_int < maxint / 10 || (nmb_int == maxint / 10 && digit <= maxint % 10))
-                        nmb_int = 10 * nmb_int + digit;
+                    if (_nmbInt < maxInt / 10 || (_nmbInt == maxInt / 10 && digit <= maxInt % 10))
+                    {
+                        _nmbInt = 10 * _nmbInt + digit;
+                    }
                     else
                     {
-                        InputOutput.Error(203, token);
+                        InputOutput.Error(203, _token);
                         isOverflow = true;
-                        nmb_int = 0;
+                        _nmbInt = 0;
                         while (InputOutput.Ch >= '0' && InputOutput.Ch <= '9') InputOutput.NextCh();
                         break;
                     }
@@ -135,10 +140,10 @@ class LexicalAnalyzer
                 InputOutput.NextCh();
                 if (InputOutput.Ch == '.')
                 {
-                    pendingToken = twopoints;
+                    _pendingToken = TwoPoints;
                     InputOutput.NextCh();
-                    symbol = intc;
-                    return symbol;
+                    _symbol = IntC;
+                    return _symbol;
                 }
                 else if (InputOutput.Ch >= '0' && InputOutput.Ch <= '9')
                 {
@@ -150,19 +155,19 @@ class LexicalAnalyzer
                         divisor *= 10;
                         InputOutput.NextCh();
                     }
-                    nmb_float = (float)nmb_int + fractionalPart;
-                    symbol = floatc;
-                    return symbol;
+                    _nmbFloat = (float)_nmbInt + fractionalPart;
+                    _symbol = FloatC;
+                    return _symbol;
                 }
                 else
                 {
-                    pendingToken = point;
-                    symbol = intc;
-                    return symbol;
+                    _pendingToken = Point;
+                    _symbol = IntC;
+                    return _symbol;
                 }
             }
-            symbol = intc;
-            return symbol;
+            _symbol = IntC;
+            return _symbol;
         }
 
         switch (InputOutput.Ch)
@@ -171,68 +176,82 @@ class LexicalAnalyzer
                 InputOutput.NextCh();
                 if (InputOutput.Ch == '=')
                 {
-                    symbol = laterequal; InputOutput.NextCh();
+                    _symbol = LaterEqual; InputOutput.NextCh();
                 }
                 else
                     if (InputOutput.Ch == '>')
                     {
-                        symbol = latergreater; InputOutput.NextCh();
+                        _symbol = LaterGreater; InputOutput.NextCh();
                     }
                     else
-                        symbol = later;
+                        _symbol = Later;
                 break;
             case '>':
                 InputOutput.NextCh();
                 if (InputOutput.Ch == '=')
                 {
-                    symbol = greaterequal; InputOutput.NextCh();
+                    _symbol = GreaterEqual; InputOutput.NextCh();
                 }
                 else
-                    symbol = greater;
+                    _symbol = Greater;
                 break;
             case ':':
                 InputOutput.NextCh();
                 if (InputOutput.Ch == '=')
                 {
-                    symbol = assign; InputOutput.NextCh();
+                    _symbol = Assign; InputOutput.NextCh();
                 }
                 else
-                    symbol = colon;
+                    _symbol = Colon;
                 break;
             case ';':
-                symbol = semicolon;
+                _symbol = Semicolon;
                 InputOutput.NextCh();
                 break;
             case '.':
                 InputOutput.NextCh();
                 if (InputOutput.Ch == '.')
                 {
-                    symbol = twopoints; InputOutput.NextCh();
+                    _symbol = TwoPoints; InputOutput.NextCh();
                 }
-                else symbol = point;
+                else _symbol = Point;
                 break;
             case ',':
-                symbol = comma;
+                _symbol = Comma;
                 InputOutput.NextCh();
                 break;
             case '*':
-                symbol = star;
+                TextPosition starPosition = new TextPosition(InputOutput.PositionNow.lineNumber, InputOutput.PositionNow.charNumber);
                 InputOutput.NextCh();
-                break;
+
+                if (InputOutput.Ch == ')')
+                {
+                   
+                    InputOutput.NextCh();
+                    InputOutput.Error(204, starPosition); 
+                    return 1;
+                }
+                else
+                {
+                    _symbol = Star;
+                    return _symbol;
+                }
             case '/':
-                symbol = slash;
+                _symbol = Slash;
                 InputOutput.NextCh();
                 break;
             case '=':
-                symbol = equal;
+                _symbol = Equal;
                 InputOutput.NextCh();
                 break;
             case '^':
-                symbol = arrow;
+                _symbol = Arrow;
                 InputOutput.NextCh();
                 break;
             case '(':
+                TextPosition commentStart = new TextPosition(InputOutput.PositionNow.lineNumber, InputOutput.PositionNow.charNumber);
                 InputOutput.NextCh();
+
                 if (InputOutput.Ch == '*')
                 {
                     InputOutput.NextCh();
@@ -241,8 +260,8 @@ class LexicalAnalyzer
                     {
                         if (InputOutput.Ch == '\0')
                         {
-                            InputOutput.Error(1, token);
-                            return 0;
+                            InputOutput.Error(205, commentStart);
+                            return 1;
                         }
 
                         if (InputOutput.Ch == '*')
@@ -250,81 +269,75 @@ class LexicalAnalyzer
                             InputOutput.NextCh();
                             if (InputOutput.Ch == ')')
                             {
-                                InputOutput.NextCh(); 
-                                break; 
+                                InputOutput.NextCh();
+                                break;
                             }
-                            continue; 
                         }
-                        InputOutput.NextCh();
+                        else
+                        {
+                            InputOutput.NextCh();
+                        }
                     }
-
-                    return NextSym();
+                    break;
                 }
                 else
                 {
-                    symbol = leftpar;
+                    _symbol = LeftPar;
+                    return _symbol;
                 }
-                break;
             case ')':
-                symbol = rightpar;
+                _symbol = RightPar;
                 InputOutput.NextCh();
                 break;
             case '[':
-                symbol = lbracket;
+                _symbol = LBracket;
                 InputOutput.NextCh();
                 break;
             case ']':
-                symbol = rbracket;
+                _symbol = RBracket;
                 InputOutput.NextCh();
                 break;
             case '{':
-                symbol = flpar;
+                _symbol = FlPar;
                 InputOutput.NextCh();
                 break;
             case '}':
-                symbol = frpar;
+                _symbol = FrPar;
                 InputOutput.NextCh();
                 break;
-            case '\'': 
-            case '"':  
-                char quoteType = InputOutput.Ch; 
-                InputOutput.NextCh();           
-
-                string strLiteral = "";
-
-                
-                while (InputOutput.Ch != quoteType && InputOutput.Ch != '\0')
+            case '\'':
+            case '"':
+                char quoteType = InputOutput.Ch;
+                InputOutput.NextCh();
+                Console.WriteLine("#### начало строки");
+                int counter = 0;
+                while (InputOutput.Ch != '\n' && InputOutput.Ch != quoteType)
                 {
-                    
-                    if (InputOutput.Ch == '\n' || InputOutput.Ch == '\r')
-                    {
-                        break;
-                    }
-
-                    strLiteral += InputOutput.Ch; 
                     InputOutput.NextCh();
+                    counter++;
                 }
-
+                Console.WriteLine($"### конец строки, длинна {counter}");
                 if (InputOutput.Ch == quoteType)
                 {
-                    InputOutput.NextCh();       
-                    symbol = stringc;           
-                    addrName = strLiteral;      
+                    Console.Write($"###нашли конец строки '{InputOutput.Ch}'###");
+                    InputOutput.NextCh();
+                    _symbol = StringC;
+                   
+                    return _symbol;
                 }
                 else
                 {
-                    
-                    InputOutput.Error(1, token);
-                    symbol = 0;
+                    InputOutput.Error(206, _token);
+                    _symbol = StringC;
+
+                    return 1;
                 }
-                return symbol;
             default:
-                InputOutput.Error(1, token);
+                InputOutput.Error(1, _token);
                 InputOutput.NextCh();
-                symbol = 0;
                 return 1;
         }
 
-        return symbol;
+        return _symbol;
     }
 }

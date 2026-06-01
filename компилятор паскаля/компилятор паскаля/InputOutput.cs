@@ -23,7 +23,7 @@ class Err
 
 class InputOutput
 {
-    const byte ERRMAX = 9;
+    const byte ERRMAX = 200;
     private static string _line;
     private static byte _lastInLine;
     private static uint _errCount;
@@ -47,21 +47,60 @@ class InputOutput
         _ErrorTable = new Dictionary<byte, string>
         {
             { 1, "Неизвестный символ (лексическая ошибка)" },
-            { 203, "Слишком большое целое число (предел для Integer — 32767)" }
+            { 203, "Слишком большое целое число (предел для Integer — 32767)" },
+            { 204, "Закрывающий комментарий '*)' не имеет открывающего '(*'"},
+            {205, "Комментарий не закрыт" },
+            {206, "Строковая константа не закрыта" }
         };
         ReadNextLine();
         Ch = _line[0];
     }
+    private static void ListThisLine()
+    {
+        Console.WriteLine(_line);
+    }
+
+    private static void ReadNextLine()
+    {
+        if (!File.EndOfStream)
+        {
+            _errShowCount = 0;
+           
+            _line = File.ReadLine() + "\n";
+            _lastInLine = (byte)(_line.Length - 1);
+
+            Console.WriteLine("      " + _line.TrimEnd('\n', '\r'));
+
+            _err = new List<Err>();
+        }
+        else
+        {
+            _line = "\0";
+            _lastInLine = 0;
+            _err = new List<Err>();
+        }
+    }
 
     public static void NextCh()
     {
-        
+        if (Ch == '\0')
+        {
+            return;
+        }
 
         if (PositionNow.charNumber == _lastInLine)
         {
             if (_err.Count > 0)
             {
                 ListErrors();
+            }
+
+            if (_line == "\0")
+            {
+                End();
+                File.Close();
+                Ch = '\0';
+                return;
             }
 
             ReadNextLine();
@@ -73,31 +112,6 @@ class InputOutput
         {
             PositionNow.charNumber = (byte)(PositionNow.charNumber + 1);
             Ch = _line[PositionNow.charNumber];
-        }
-    }
-
-    private static void ListThisLine()
-    {
-        Console.WriteLine(_line);
-    }
-
-    private static void ReadNextLine()
-    {
-        if (!File.EndOfStream)
-        {
-            _errShowCount = 0;
-            _line = File.ReadLine() + " ";
-            _lastInLine = (byte)(_line.Length - 1);
-
-            Console.WriteLine("      " + _line.TrimEnd());
-
-            _err = new List<Err>();
-        }
-        else
-        {
-            End();
-            File.Close();
-            throw new System.IO.EndOfStreamException();
         }
     }
 
@@ -134,11 +148,16 @@ class InputOutput
         if (_err.Count < ERRMAX)
         {
             TextPosition savedPosition = new TextPosition(position.lineNumber, position.charNumber);
-
             Err e = new Err(savedPosition, errorCode);
             _err.Add(e);
         }
         else _errShowCount++;
+
+        if (Ch == '\0')
+        {
+            ListErrors();
+            _err.Clear();
+        }
     }
 }
 
