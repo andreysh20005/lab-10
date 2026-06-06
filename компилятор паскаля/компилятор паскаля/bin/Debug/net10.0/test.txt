@@ -1,16 +1,20 @@
-program test;
+program GoodProgram;
 var
   a, b : integer;
-  x, y : real;
+  x : real;
+
+procedure SayHello;
+begin
+  a := 1;
+  b := a
+end;
+
 begin
   a := 10;
   b := 20;
-  x := 5.25;
-  y := 1.7;
-  
-  if a < b then
-    a := b;
-    
-  if x > y then
-    x := y;
+  x := 3.14;
+  SayHello;
+  begin
+    b := b
+  end
 end.

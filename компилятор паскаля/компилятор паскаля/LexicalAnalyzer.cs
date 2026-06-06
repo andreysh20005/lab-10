@@ -47,7 +47,7 @@
     private float _nmbFloat;
     private char _oneSymbol;
     private byte _pendingToken;
-
+    private string _stringConst;
     public LexicalAnalyzer()
     {
         _keywords = new Keywords();
@@ -57,7 +57,16 @@
         _nmbInt = 0;
         _nmbFloat = 0;
         _addrName = "";
+        _stringConst = "";
     }
+
+
+    public byte CurrentSymbol => _symbol;
+    public string IdentName => _addrName;
+    public int IntValue => _nmbInt;
+    public float FloatValue => _nmbFloat;
+    public TextPosition TokenPosition => _token;
+    public string StringConst => _stringConst;
 
     public byte NextSym()
     {
@@ -226,9 +235,9 @@
 
                 if (InputOutput.Ch == ')')
                 {
-                   
+
                     InputOutput.NextCh();
-                    InputOutput.Error(204, starPosition); 
+                    InputOutput.Error(204, starPosition);
                     return 1;
                 }
                 else
@@ -278,7 +287,7 @@
                             InputOutput.NextCh();
                         }
                     }
-                    break;
+                    return NextSym();
                 }
                 else
                 {
@@ -309,20 +318,17 @@
             case '"':
                 char quoteType = InputOutput.Ch;
                 InputOutput.NextCh();
-                Console.WriteLine("#### начало строки");
                 int counter = 0;
                 while (InputOutput.Ch != '\n' && InputOutput.Ch != quoteType)
                 {
                     InputOutput.NextCh();
                     counter++;
                 }
-                Console.WriteLine($"### конец строки, длинна {counter}");
+
                 if (InputOutput.Ch == quoteType)
                 {
-                    Console.Write($"###нашли конец строки '{InputOutput.Ch}'###");
                     InputOutput.NextCh();
                     _symbol = StringC;
-                   
                     return _symbol;
                 }
                 else
